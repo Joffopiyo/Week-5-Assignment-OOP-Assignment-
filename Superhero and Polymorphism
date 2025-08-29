@@ -1,0 +1,129 @@
+# Assignment 1: Design Your Own Class
+# This class represents a superhero with attributes and methods.
+class Superhero:
+    """
+    A class to represent a Superhero.
+
+    Attributes:
+        name (str): The name of the superhero.
+        superpower (str): The superhero's special ability.
+        weakness (str): The superhero's vulnerability.
+        _is_flying (bool): A private attribute to demonstrate encapsulation.
+    """
+    def __init__(self, name, superpower, weakness):
+        """
+        The constructor for the Superhero class.
+
+        Args:
+            name (str): The name of the superhero.
+            superpower (str): The superhero's special ability.
+            weakness (str): The superhero's vulnerability.
+        """
+        self.name = name
+        self.superpower = superpower
+        self.weakness = weakness
+        self._is_flying = False  # Encapsulation: private attribute
+
+    def fly(self):
+        """ Changes the flying status of the superhero."""
+        if not self._is_flying:
+            print(f"{self.name} takes off and soars through the sky!")
+            self._is_flying = True
+        else:
+            print(f"{self.name} is already flying.")
+
+    def land(self):
+        """Changes the flying status of the superhero."""
+        if self._is_flying:
+            print(f"{self.name} lands gracefully.")
+            self._is_flying = False
+        else:
+            print(f"{self.name} is already on the ground.")
+    
+    def display_status(self):
+        """ Prints the current status of the superhero."""
+        print(f"Name: {self.name}")
+        print(f"Superpower: {self.superpower}")
+        print(f"Weakness: {self.weakness}")
+        print(f"Is Flying: {self._is_flying}")
+
+class Vigilante(Superhero):
+    """
+    A subclass of Superhero, demonstrating inheritance.
+    A Vigilante is a type of Superhero with an added 'gadget' attribute.
+    """
+    def __init__(self, name, superpower, weakness, gadget):
+        """
+        Constructor for the Vigilante class.
+
+        Args:
+            name (str): The name of the vigilante.
+            superpower (str): The vigilante's special ability.
+            weakness (str): The vigilante's vulnerability.
+            gadget (str): The vigilante's special tool.
+        """
+        super().__init__(name, superpower, weakness)
+        self.gadget = gadget
+
+    def use_gadget(self):
+        """Prints a message about using the vigilante's gadget."""
+        print(f"{self.name} uses their {self.gadget} to fight crime!")
+
+
+# --- Activity 2: Polymorphism Challenge ---
+# These classes all have a 'move()' method, but each implementation is unique.
+
+class Car:
+    def move(self):
+        print("Driving 🚗")
+
+class Plane:
+    def move(self):
+        print("Flying ✈️")
+
+class Submarine:
+    def move(self):
+        print("Submerging 🌊")
+        
+class Bicycle:
+    def move(self):
+        print("Riding a bike 🚲")
+
+# A function to demonstrate polymorphism. It can accept any of the above objects.
+def perform_move(vehicle):
+    """
+    Calls the move() method on any object passed to it.
+    This demonstrates polymorphism.
+    
+    Args:
+        vehicle: An object with a move() method.
+    """
+    vehicle.move()
+
+# --- Main execution of the code ---
+
+# Assignment 1 demonstration
+print("--- Demonstrating Superhero and Vigilante Classes ---")
+superman = Superhero("Superman", "Flight and Super Strength", "Kryptonite")
+superman.display_status()
+superman.fly()
+superman.land()
+print("\n")
+
+batman = Vigilante("Batman", "Brilliance", "Family", "Grappling Hook")
+batman.display_status()
+batman.use_gadget()
+print("\n")
+
+# Activity 2 demonstration
+print("--- Demonstrating Polymorphism ---")
+my_car = Car()
+my_plane = Plane()
+my_submarine = Submarine()
+my_bike = Bicycle()
+
+# Using the perform_move function with different objects
+perform_move(my_car)
+perform_move(my_plane)
+perform_move(my_submarine)
+perform_move(my_bike)
